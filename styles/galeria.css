@@ -1,0 +1,574 @@
+
+/* ==============================
+   CONFIGURAÇÕES GERAIS
+============================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --vermelho: #e63946;
+    --vermelho-hover: #c1121f;
+    --preto: #0b0d0f;
+    --preto-card: #151719;
+    --branco: #ffffff;
+    --cinza: #b5b5b5;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 20px;
+}
+
+body {
+    font-family: "Roboto", sans-serif;
+    background-color: var(--preto);
+    color: var(--branco);
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+/* ==============================
+   MENU DE NAVEGAÇÃO (COM LOGO)
+============================== */
+
+header {
+    width: 100%;
+    background-color: #121212; /* Fundo escuro */
+    position: relative;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+.navegacao {
+    max-width: 1200px;
+    min-height: 80px;
+    margin: 0 auto;
+    padding: 0 25px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Centraliza tudo no meio da barra */
+    position: relative;      /* Permite posicionar a logo de forma absoluta se quiser */
+}
+
+/* Se quiser manter a logo na esquerda e o menu perfeitamente no centro da página */
+.logonav {
+    position: absolute;
+    left: 25px; /* Fixa a logo no canto esquerdo */
+}
+
+.logonav img {
+    display: block;
+    width: 75px;     /* Tamanho menor ajustado */
+    height: auto;    /* Mantém a proporção sem distorcer */
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.logonav img:hover {
+    transform: scale(1.05);
+}
+
+/* Estilo do Menu */
+.menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.menu li a {
+    display: block;
+    position: relative;
+    padding: 20px 0;
+
+    color: #ffffff; /* Texto branco */
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+
+    transition: color 0.3s ease;
+}
+
+/* Linha vermelha de destaque */
+.menu li a::after {
+    content: "";
+    position: absolute;
+    bottom: 12px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background-color: #e63946; /* Vermelho do tema */
+    transition: width 0.3s ease;
+}
+
+/* Hover e página atual ativa */
+.menu li a:hover,
+.menu li a[aria-current="page"] {
+    color: #e63946;
+}
+
+.menu li a:hover::after,
+.menu li a[aria-current="page"]::after {
+    width: 100%;
+}
+/* ==============================
+   BANNER PRINCIPAL
+============================== */
+
+.banner {
+    min-height: 380px;
+    padding: 70px 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    background:
+        linear-gradient(
+            rgba(0, 0, 0, 0.65),
+            rgba(0, 0, 0, 0.80)
+        ),
+        url("../assets/mustang.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    border-bottom: 1px solid #292929;
+}
+
+.conteudo_banner {
+    max-width: 800px;
+    animation: aparecer 0.8s ease;
+}
+
+
+
+.conteudo_banner h1 {
+    font-size: clamp(36px, 5vw, 58px);
+    line-height: 1.2;
+    margin-bottom: 15px;
+}
+
+.conteudo_banner p {
+    font-size: 18px;
+    color: #e0e0e0;
+    margin-bottom: 28px;
+}
+.subtitulo,
+.etiqueta {
+    display: inline-block;
+    color: var(--vermelho);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    margin-bottom: 12px;
+}
+
+/* ==============================
+   BOTÕES
+============================== */
+
+.botao {
+    display: inline-block;
+    padding: 13px 28px;
+
+    background-color: var(--vermelho);
+    color: var(--branco);
+
+    border: 2px solid var(--vermelho);
+    border-radius: 5px;
+
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 700;
+
+    transition: all 0.3s ease;
+}
+
+.botao:hover {
+    background-color: var(--vermelho-hover);
+    border-color: var(--vermelho-hover);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(230, 57, 70, 0.25);
+}
+
+/* ==============================
+   INTRODUÇÃO
+============================== */
+
+.introducao {
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 65px 25px 25px;
+    text-align: center;
+}
+
+.introducao h2 {
+    font-size: clamp(25px, 4vw, 34px);
+    line-height: 1.3;
+    margin-bottom: 18px;
+}
+
+.introducao p {
+    color: var(--cinza);
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+/* ==============================
+   GALERIA
+============================== */
+
+.galeria {
+    max-width: 1250px;
+    margin: 0 auto;
+    padding: 35px 25px 75px;
+}
+
+.galeria_grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 22px;
+}
+
+/* CARDS */
+
+.card_galeria {
+    position: relative;
+    min-width: 0;
+    height: 290px;
+
+    overflow: hidden;
+    border-radius: 9px;
+    background-color: var(--preto-card);
+    border: 1px solid #292929;
+
+    isolation: isolate;
+    transition: border-color 0.3s ease;
+}
+
+/* IMAGENS */
+
+.card_galeria img {
+    display: block;
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    transition: transform 0.5s ease;
+}
+
+/* GRADIENTE SOBRE AS IMAGENS */
+
+.card_galeria::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+
+    background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.95) 0%,
+        rgba(0, 0, 0, 0.45) 45%,
+        transparent 80%
+    );
+}
+
+/* INFORMAÇÕES */
+
+.info_galeria {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+
+    padding: 22px 18px;
+    transform: translateY(8px);
+
+    transition: transform 0.3s ease;
+}
+
+.info_galeria span {
+    display: inline-block;
+    margin-bottom: 7px;
+
+    color: #ff5964;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+.info_galeria h3 {
+    font-size: 20px;
+    line-height: 1.3;
+    margin-bottom: 6px;
+}
+
+.info_galeria p {
+    color: #dddddd;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+/* EFEITOS */
+
+.card_galeria:hover {
+    border-color: var(--vermelho);
+}
+
+.card_galeria:hover img {
+    transform: scale(1.08);
+}
+
+.card_galeria:hover .info_galeria {
+    transform: translateY(0);
+}
+
+/* ==============================
+   CHAMADA PARA CONTATO
+============================== */
+
+.chamada {
+    padding: 65px 20px;
+    text-align: center;
+
+    background: linear-gradient(
+        135deg,
+        rgba(230, 57, 70, 0.12),
+        rgba(11, 13, 15, 0.2)
+    );
+
+    border-top: 1px solid #292929;
+}
+
+.conteudo_chamada {
+    max-width: 750px;
+    margin: 0 auto;
+}
+
+.conteudo_chamada h2 {
+    font-size: clamp(27px, 4vw, 36px);
+    margin-bottom: 12px;
+}
+
+.conteudo_chamada p {
+    color: var(--cinza);
+    margin-bottom: 25px;
+}
+
+/* ==============================
+   RODAPÉ
+============================== */
+
+footer {
+    background-color: #080909;
+    border-top: 1px solid #242424;
+    padding: 35px 20px;
+    text-align: center;
+}
+
+.rodape_conteudo {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo_rodape {
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
+.logo_rodape img {
+    display: block;
+    width: 130px;
+    height: 65px;
+    object-fit: contain;
+}
+
+.rodape_conteudo p {
+    color: var(--cinza);
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.rodape_conteudo .copyright {
+    color: #777777;
+    font-size: 12px;
+    margin-top: 18px;
+}
+
+/* ==============================
+   ANIMAÇÃO
+============================== */
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==============================
+   TABLETS
+============================== */
+
+@media (max-width: 1000px) {
+    .navegacao {
+        gap: 25px;
+        padding: 10px 20px;
+    }
+
+    .menu {
+        gap: 20px;
+    }
+
+    .galeria_grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+    }
+
+    .card_galeria {
+        height: 270px;
+    }
+}
+
+/* ==============================
+   CELULARES
+============================== */
+
+@media (max-width: 700px) {
+    .navegacao {
+        flex-direction: column;
+        justify-content: center;
+        gap: 5px;
+        padding: 12px 15px;
+    }
+
+    .logonav img {
+        width: 85px;
+        height: 50px;
+    }
+
+    .menu {
+        flex-wrap: wrap;
+        gap: 5px 18px;
+    }
+
+    .menu li a {
+        font-size: 14px;
+        padding: 8px 0;
+    }
+
+    .menu li a::after {
+        bottom: 2px;
+    }
+
+    .banner {
+        min-height: 300px;
+        padding: 50px 20px;
+    }
+
+    .conteudo_banner p {
+        font-size: 16px;
+    }
+
+    .introducao {
+        padding: 45px 20px 15px;
+    }
+
+    .introducao p {
+        font-size: 14px;
+    }
+
+    .galeria {
+        padding: 30px 16px 50px;
+    }
+
+    .galeria_grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 13px;
+    }
+
+    .card_galeria {
+        height: 250px;
+    }
+
+    .info_galeria {
+        padding: 15px 12px;
+        transform: none;
+    }
+
+    .info_galeria span {
+        font-size: 9px;
+        letter-spacing: 1px;
+    }
+
+    .info_galeria h3 {
+        font-size: 16px;
+    }
+
+    .info_galeria p {
+        font-size: 12px;
+    }
+
+    .chamada {
+        padding: 45px 20px;
+    }
+}
+
+/* CELULARES PEQUENOS */
+
+@media (max-width: 420px) {
+    .menu {
+        gap: 5px 13px;
+    }
+
+    .menu li a {
+        font-size: 13px;
+    }
+
+    .galeria_grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .card_galeria {
+        height: 280px;
+    }
+
+    .info_galeria h3 {
+        font-size: 19px;
+    }
+
+    .info_galeria p {
+        font-size: 13px;
+    }
+}
+
+/* ACESSIBILIDADE */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation: none !important;
+        transition: none !important;
+    }
+}

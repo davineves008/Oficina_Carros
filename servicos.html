@@ -1,130 +1,164 @@
+
 <!DOCTYPE html>
-<html lang="PT-BR">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Oficina Carros</title>
-    <!-- Link para a fonte Roboto que você configurou no CSS anteriormente -->
-    <link href="https://googleapis.com" rel="stylesheet">
+
+    <title>Serviços | Oficina Carros</title>
+
+    <!-- Fonte Roboto -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- CSS da página -->
     <link rel="stylesheet" href="styles/servicos.css">
 </head>
 
 <body>
+
     <header>
-        <nav class="navegacao">
-           
+        <nav class="navegacao" aria-label="Menu principal">
             <ul class="menu">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="servicos.html">Serviços</a></li>
-                <li><a href="galeria.html">Galeria</a></li>
+                <li><a href="servicos.html" aria-current="page">Serviços</a></li>
+                <li><a href="galeria .html">Galeria</a></li>
                 <li><a href="equipe.html">Equipe</a></li>
                 <li><a href="contato.html">Contato</a></li>
             </ul>
         </nav>
     </header>
- <section class="banner">
-        <div class="conteudo_banner">
-            <h1>Bem-vindo à Serviços</h1>
-            <p>Seu carro em boas mãos!</p>
-            <a href="https://wa.me" target="_blank" class="botao">Agendar Avaliação</a>
-        </div>
-    </section>
 
-    <section>
-        <div class="conteiner_principal">
+    <main>
 
-            <div class="card_service">
+        <!-- Banner principal -->
+        <section class="banner">
+            <div class="conteudo_banner">
+                 <span class="subtitulo">CARS TUNNING</span>
+                <h1>Conheça nossos serviços</h1>
+                <p>Seu carro em boas mãos!</p>
 
-                <a href="servicos.html">
-                    <img src="assets/ECU.jpg" alt="logo ecu">
+                <a
+                    href="contato.html"
+                    class="botao"
+                    aria-label="Entre em contato para agendar uma avaliação"
+                >
+                    Agendar avaliação
                 </a>
+            </div>
+        </section>
 
-                <h3>
-                    Remapeamento de ECU
-                </h3>
-                <p>
-                    O remapeamento de ECU é um processo que envolve a reprogramação da unidade de controle do motor
-                    (ECU) do veículo. Isso permite otimizar o desempenho do motor, melhorando a potência, torque e
-                    eficiência de combustível. É uma técnica popular entre entusiastas de carros que desejam extrair
-                    mais desempenho de seus veículos.
-                </p>
+        <!-- Lista de serviços -->
+        <section aria-label="Serviços automotivos">
+            <div class="conteiner_principal">
 
+                <article class="card_service">
+                    <img
+                        src="assets/ECU.jpg"
+                        alt="Equipamentos utilizados no remapeamento de ECU"
+                        loading="lazy"
+                    >
+
+                    <h2>Remapeamento de ECU</h2>
+
+                    <p>
+                        O remapeamento de ECU consiste na reprogramação
+                        da unidade de controle eletrônico do motor.
+                        Esse procedimento pode otimizar a potência e o
+                        torque, conforme as características do veículo
+                        e os limites de segurança do motor.
+                    </p>
+                </article>
+
+                <article class="card_service">
+                    <img
+                        src="assets/estetica.jpg"
+                        alt="Serviço de estética e detalhamento automotivo"
+                        loading="lazy"
+                    >
+
+                    <h2>Estética automotiva e detalhamento</h2>
+
+                    <p>
+                        Serviços especializados para melhorar a aparência
+                        e conservar o veículo. Incluem limpeza profunda,
+                        polimento, proteção da pintura e cuidados com
+                        o interior, mantendo o carro bem cuidado.
+                    </p>
+                </article>
+
+                <article class="card_service">
+                    <img
+                        src="assets/insulfilm.jpg"
+                        alt="Aplicação de película automotiva nos vidros"
+                        loading="lazy"
+                    >
+
+                    <h2>Insulfilm e envelopamento</h2>
+
+                    <p>
+                        A aplicação de películas pode ajudar a reduzir
+                        a entrada de calor e a exposição aos raios UV,
+                        conforme o produto utilizado. O envelopamento
+                        permite personalizar a aparência do veículo
+                        e contribuir para a proteção da pintura original.
+                    </p>
+                </article>
+
+                <article class="card_service">
+                    <img
+                        src="assets/rodas.jpg"
+                        alt="Rodas e pneus automotivos"
+                        loading="lazy"
+                    >
+
+                    <h2>Rodas e pneus</h2>
+
+                    <p>
+                        Realizamos serviços relacionados à manutenção
+                        de rodas e pneus, como alinhamento, balanceamento,
+                        troca de pneus e inspeções, contribuindo para
+                        a segurança e o desempenho do veículo.
+                    </p>
+                </article>
 
             </div>
 
-            <div class="card_service">
-                <a href="servicos.html">
-                    <img src="assets/estetica.jpg" alt="logo estetica">
-                </a>
-
-
-                <h3> Estética Automotiva & Detalhamento</h3>
-                <p>
-                    A estética automotiva e o detalhamento são serviços especializados que visam melhorar a aparência e
-                    a condição geral de um veículo. Isso inclui limpeza profunda, polimento, proteção da pintura,
-                    cuidados com o interior e outros procedimentos para manter o carro em ótimo estado.
-                </p>
-            </div>
-
-            <div class="card_service">
-                <a href="servicos.html">
-                    <img src="assets/insulfilm.jpg" alt="logo insulfilm">
-                </a>
-
-                <h3> Insulfim & Envelopamento</h3>
-                <p>
-                    O insulfilm é um filme adesivo aplicado aos vidros do veículo para reduzir a entrada de calor,
-                    proteger contra raios UV e aumentar a privacidade. O envelopamento é um processo de aplicação de
-                    vinil sobre a pintura do carro, permitindo mudanças de cor, proteção da pintura original e
-                    personalização estética.
-                </p>
-
-            </div>
-
-
-            <div class="card_service">
-                <a href="servicos.html">
-                    <img src="assets/rodas.jpg" alt="logo rodas">
-                </a>
-
-                <h3> Rodas & Pneus</h3>
-                <p>
-                    A manutenção de rodas e pneus é essencial para a segurança e desempenho do veículo. Isso inclui
-                    alinhamento, balanceamento, troca de pneus, reparos de rodas e inspeção regular para garantir que
-                    estejam em boas condições.
-                </p>
-
-            </div>
-
+            <!-- Atendimento -->
             <div class="paragrafo">
-                <h3>Aceitamos todos tipo de carro</h3>
+                <h2>Aceitamos todos os tipos de carros</h2>
 
                 <p>
-                    Aceitamos todos os tipos de carros, desde veículos de passeio até carros esportivos e de luxo.<br>
-                    Nossa equipe está preparada para oferecer serviços especializados para atender às necessidades de cada cliente, garantindo qualidade e satisfação em cada serviço realizado.
+                    Atendemos desde veículos de passeio até carros
+                    esportivos e de luxo. Nossa equipe busca oferecer
+                    serviços adequados às necessidades de cada cliente,
+                    com atenção à qualidade e à satisfação.
                 </p>
-
             </div>
+        </section>
 
+    </main>
 
-
-    </section>
+    <!-- Rodapé -->
     <footer>
         <div class="footer">
-            <a href="assets/logo-footer.png" target="_blank">   
-                <img src="assets/logo.jpg" alt="logo">
 
+            <a href="index.html" aria-label="Voltar para a página inicial">
+                <img src="assets/logo.jpg" alt="Logo da Oficina Carros">
             </a>
+
             <p>
-                como chegar: Rua das Flores, 123 - Bairro Jardim, Cidade Exemplo - Estado<br>
+                Como chegar: Rua das Flores, 123 - Bairro Jardim,
+                Cidade Exemplo - Estado
             </p>
 
-
         </div>
-
-        
     </footer>
 
-
 </body>
+</html>

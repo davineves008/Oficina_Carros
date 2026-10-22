@@ -1,37 +1,67 @@
-/* --- CONFIGURAÇÕES GERAIS --- */
+
+/* ==============================
+   CONFIGURAÇÕES GERAIS
+============================== */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body {
-    font-family: 'Roboto', sans-serif;
-    background-color: #fcfcfc;
-    color: #333333;
+:root {
+    --cor-principal: #e63946;
+    --cor-hover: #c1121f;
+    --cor-fundo: #fcfcfc;
+    --cor-texto: #333333;
+    --cor-escura: #111111;
+    --cor-branca: #ffffff;
 }
 
-/* --- BARRA DE NAVEGAÇÃO --- */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    line-height: 1.6;
+}
+
+/* ==============================
+   BARRA DE NAVEGAÇÃO
+============================== */
 
 header {
     width: 100%;
-    background-color: #f1f1f1;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    background-color: var(--cor-escura);
+    position: relative;
+    z-index: 100;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.2);
 }
 
 .navegacao {
-    display: flex;
-    justify-content: center; /* Centraliza a logo e os links no meio */
-    align-items: center;    /* Alinha verticalmente no centro */
-    gap: 35px;              /* Espaço entre a logo e a lista do menu */
-    padding: 15px 40px;
     max-width: 1200px;
+    min-height: 80px;
     margin: 0 auto;
+    padding: 0 25px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Centraliza tudo no meio da barra */
+    position: relative;      /* Permite posicionar a logo de forma absoluta se quiser */
 }
 
+/* Se quiser manter a logo na esquerda e o menu perfeitamente no centro da página */
+.logonav {
+    position: absolute;
+    left: 25px; /* Fixa a logo no canto esquerdo */
+}
 .logonav img {
-    height: 50px; 
-    width: auto;  
+    height: 60px;
+    width: 100px;
+    object-fit: contain;
     display: block;
     transition: transform 0.3s ease;
 }
@@ -40,71 +70,146 @@ header {
     transform: scale(1.05);
 }
 
+/* MENU */
+
 .menu {
     display: flex;
     align-items: center;
+    justify-content: center;
+    gap: 28px;
     list-style: none;
-    gap: 25px;
+    margin: 0;
+    padding: 0;
 }
-
 .menu li a {
+    display: block;
+    position: relative;
+
+    padding: 25px 0;
+
     text-decoration: none;
-    color: #333;
-    font-size: 18px;
-    font-weight: 700;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 500;
+
     transition: color 0.3s ease;
 }
 
-.menu li a:hover {
-    color: #00ee93;
+/* LINHA VERMELHA ANIMADA */
+
+.menu li a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 16px;
+
+    width: 0;
+    height: 3px;
+
+    background-color: var(--cor-principal);
+    transition: width 0.3s ease;
 }
 
-/* --- BANNER PRINCIPAL --- */
+.menu li a:hover {
+    color: var(--cor-principal);
+}
+
+.menu li a:hover::after {
+    width: 100%;
+}
+
+/* PÁGINA ATUAL */
+
+.menu li a[aria-current="page"] {
+    color: var(--cor-principal);
+}
+
+.menu li a[aria-current="page"]::after {
+    width: 100%;
+}
+
+/* ==============================
+   BANNER PRINCIPAL
+============================== */
+
 .banner {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../assets/general.jpg');
+    background-image:
+        linear-gradient(
+            rgba(0, 0, 0, 0.65),
+            rgba(0, 0, 0, 0.72)
+        ),
+        url('../assets/general.jpg');
+
     background-size: cover;
     background-position: center;
-    height: 400px;
+    background-repeat: no-repeat;
+
+    min-height: 430px;
     display: flex;
     justify-content: center;
     align-items: center;
-    text-align: center; 
-    color: white; 
-    padding: 0 20px;
+    text-align: center;
+
+    color: #ffffff;
+    padding: 60px 20px;
+}
+
+.conteudo_banner {
+    max-width: 850px;
+    animation: aparecer 0.8s ease;
 }
 
 .conteudo_banner h1 {
-    font-size: 3em;
+    font-size: clamp(32px, 5vw, 52px);
     margin-bottom: 15px;
     font-weight: 700;
+    line-height: 1.2;
 }
 
 .conteudo_banner p {
-    font-size: 1.5em;
-    margin-bottom: 25px;
-    opacity: 0.9;
+    font-size: 20px;
+    margin-bottom: 30px;
+    color: #eeeeee;
 }
+
+/* ==============================
+   BOTÃO DO BANNER
+============================== */
 
 .botao {
     display: inline-block;
-    padding: 12px 30px;
-    background-color: #00ee93;
-    color: black;
+
+    padding: 14px 30px;
+
+    background-color: var(--cor-principal);
+    color: #ffffff;
+
     text-decoration: none;
-    border-radius: 5px;
-    font-size: 1.1em;
-    font-weight: bold;
-    transition: transform 0.2s ease, background-color 0.2s ease;
+    border: 2px solid var(--cor-principal);
+    border-radius: 6px;
+
+    font-size: 16px;
+    font-weight: 700;
+
+    transition:
+        transform 0.3s ease,
+        background-color 0.3s ease,
+        box-shadow 0.3s ease;
 }
 
 .botao:hover {
-    background-color: #00c479;
-    transform: scale(1.05);
+    background-color: var(--cor-hover);
+    border-color: var(--cor-hover);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(230, 57, 70, 0.3);
 }
 
-/* --- SEÇÃO DE DETALHES / SERVIÇOS --- */
+/* ==============================
+   SEÇÃO DE DETALHES / SERVIÇOS
+============================== */
+
 .detalhe {
-    padding: 60px 20px;
+    padding: 70px 20px;
     max-width: 1200px;
     margin: 0 auto;
 }
@@ -112,100 +217,294 @@ header {
 .container_detalhes {
     display: flex;
     justify-content: center;
-    gap: 30px;
+    align-items: stretch;
+    gap: 25px;
     flex-wrap: wrap;
 }
 
 .bloco_detalhe {
-    background-color: white;
+    background-color: #ffffff;
+
     padding: 30px;
-    border-radius: 8px;
+    border-radius: 10px;
+
     width: 320px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-    border-top: 4px solid #00ee93;
-    transition: transform 0.3s ease;
+    max-width: 100%;
+
+    border: 1px solid #eeeeee;
+    border-top: 4px solid var(--cor-principal);
+
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+
+    flex: 1 1 280px;
 }
 
 .bloco_detalhe:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); 
+    transform: translateY(-7px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
 }
 
 .bloco_detalhe h3 {
-    font-size: 1.3em;
+    font-size: 21px;
     margin-bottom: 15px;
-    color: #0a192f;
+    color: var(--cor-escura);
+    line-height: 1.3;
 }
 
 .bloco_detalhe p {
-    font-size: 1em;
-    color: #666;
-    line-height: 1.6;
+    font-size: 15px;
+    color: #666666;
+    line-height: 1.8;
 }
 
-/* --- SEÇÃO MARCAS QUE ATENDEMOS --- */
+/* ==============================
+   MARCAS QUE ATENDEMOS
+============================== */
+
 .cards {
-    padding: 60px 20px;
+    padding: 70px 20px;
     background-color: #ffffff;
     text-align: center;
 }
 
 .marcas h2 {
-    font-family: 'Roboto', sans-serif;
-    font-size: 2em;
-    color: #222;
+    font-size: 32px;
+    color: #222222;
     margin-bottom: 40px;
     position: relative;
+}
+
+.marcas h2::after {
+    content: "";
+    display: block;
+
+    width: 65px;
+    height: 4px;
+
+    background-color: var(--cor-principal);
+    border-radius: 5px;
+
+    margin: 12px auto 0;
 }
 
 .container_marcas {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 40px;      
+
+    gap: 35px;
     flex-wrap: wrap;
+
     max-width: 1200px;
     margin: 0 auto;
 }
 
 .card_marca {
-    width: 120px;    
-    height: 120px;   
+    width: 120px;
+    height: 120px;
+
     display: flex;
     justify-content: center;
     align-items: center;
-    filter: grayscale(100%); 
-    opacity: 0.6;            
-    transition: all 0.3s ease; 
+
+    padding: 12px;
+
+    filter: grayscale(100%);
+    opacity: 0.7;
+
+    transition:
+        filter 0.3s ease,
+        opacity 0.3s ease,
+        transform 0.3s ease;
 }
 
 .card_marca img {
-    max-width: 100%; 
-    max-height: 100%; 
-    object-fit: contain; 
+    max-width: 100%;
+    max-height: 100%;
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
 }
 
 .card_marca:hover {
-    filter: grayscale(0%); 
-    opacity: 1;            
-    transform: scale(1.1);  
+    filter: grayscale(0%);
+    opacity: 1;
+    transform: scale(1.1);
 }
 
-/* --- RODAPÉ --- */
+/* ==============================
+   RODAPÉ
+============================== */
+
 footer {
-    background-color: #1a1a1a;
-    color: #999;
-    padding: 30px 20px;
+    background-color: #111111;
+    color: #aaaaaa;
+
+    padding: 35px 20px;
     text-align: center;
-    font-size: 0.9em;
-    margin-top: 40px;
+
+    font-size: 14px;
+    margin-top: 0;
+}
+
+.rodape_conteudo {
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .rodape_conteudo p {
     margin-bottom: 10px;
+    line-height: 1.8;
 }
 
 .rodape_conteudo p:first-child {
-    color: #fff;
-    font-weight: bold;
+    color: #ffffff;
+    font-weight: 500;
+}
+
+/* ==============================
+   ANIMAÇÃO DO BANNER
+============================== */
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==============================
+   TABLETS
+============================== */
+
+@media (max-width: 900px) {
+    .navegacao {
+        padding: 10px 20px;
+        gap: 20px;
+    }
+
+    .menu {
+        gap: 22px;
+    }
+
+    .container_detalhes {
+        gap: 20px;
+    }
+
+    .container_marcas {
+        gap: 25px;
+    }
+}
+
+/* ==============================
+   CELULARES
+============================== */
+
+@media (max-width: 600px) {
+    .navegacao {
+        flex-direction: column;
+        justify-content: center;
+        gap: 5px;
+        padding: 12px 10px;
+    }
+
+    .logonav img {
+        height: 50px;
+        width: 85px;
+    }
+
+    .menu {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 5px 18px;
+    }
+
+    .menu li a {
+        font-size: 14px;
+        padding: 8px 0;
+    }
+
+    .menu li a::after {
+        bottom: 2px;
+    }
+
+    .banner {
+        min-height: 350px;
+        padding: 50px 20px;
+    }
+
+    .conteudo_banner h1 {
+        font-size: 32px;
+    }
+
+    .conteudo_banner p {
+        font-size: 17px;
+    }
+
+    .botao {
+        padding: 12px 22px;
+        font-size: 15px;
+    }
+
+    .detalhe {
+        padding: 40px 16px;
+    }
+
+    .container_detalhes {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 20px;
+    }
+
+    .bloco_detalhe {
+        width: 100%;
+        flex: auto;
+        padding: 25px;
+    }
+
+    .cards {
+        padding: 45px 15px;
+    }
+
+    .marcas h2 {
+        font-size: 26px;
+        margin-bottom: 30px;
+    }
+
+    .container_marcas {
+        gap: 15px;
+    }
+
+    .card_marca {
+        width: 90px;
+        height: 90px;
+    }
+
+    footer {
+        padding: 25px 15px;
+    }
+}
+
+/* ==============================
+   ACESSIBILIDADE
+============================== */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation: none !important;
+        transition: none !important;
+    }
 }

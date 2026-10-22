@@ -1,0 +1,432 @@
+/* ==============================
+   CONFIGURAÇÕES GERAIS
+============================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --cor-principal: #ff334b;       /* Vermelho mais vivo e moderno */
+    --cor-principal-hover: #e0243d; /* Vermelho escuro para hover */
+    --cor-fundo: #0d0f12;           /* Fundo geral da página mais escuro e elegante */
+    --cor-fundo-card: #16191e;      /* Fundo dos cards e caixas */
+    --cor-texto: #f1f1f1;           /* Texto claro principal */
+    --cor-secundaria: #9da3af;      /* Texto secundário/cinzento */
+    --cor-escura: #0a0c0f;          /* Preto absoluto/header/footer */
+    --cor-branca: #ffffff;
+    --borda-arredondada: 16px;
+    --sombra-padrao: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Roboto", sans-serif;
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    line-height: 1.6;
+}
+
+/* ==============================
+   MENU DE NAVEGAÇÃO MODERNO
+============================== */
+
+header {
+    width: 100%;
+    background-color: rgba(10, 12, 15, 0.85);
+    backdrop-filter: blur(10px); /* Efeito vidro fosco moderno */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+.navegacao {
+    max-width: 1200px;
+    min-height: 80px;
+    margin: 0 auto;
+    padding: 0 25px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Centraliza tudo no meio da barra */
+    position: relative;      /* Permite posicionar a logo de forma absoluta se quiser */
+}
+
+/* Se quiser manter a logo na esquerda e o menu perfeitamente no centro da página */
+.logonav {
+    position: absolute;
+    left: 25px; /* Fixa a logo no canto esquerdo */
+}
+.logonav img {
+    display: block;
+    width: 70px;
+    height: auto;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.logonav img:hover {
+    transform: scale(1.08);
+}
+
+/* Menu */
+.menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu li a {
+    display: block;
+    position: relative;
+    padding: 10px 0;
+
+    color: var(--cor-secundaria);
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+
+    transition: color 0.3s ease;
+}
+
+/* Linha vermelha moderna com efeito de brilho */
+.menu li a::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--cor-principal), #ff6b7b);
+    border-radius: 2px;
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.menu li a:hover,
+.menu li a[aria-current="page"] {
+    color: var(--cor-branca);
+}
+
+.menu li a:hover::after,
+.menu li a[aria-current="page"]::after {
+    width: 100%;
+}
+
+/* ==============================
+   BANNER PRINCIPAL
+============================== */
+.banner {
+    min-height: 380px;
+    padding: 80px 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    background:
+        linear-gradient(
+            rgba(13, 15, 18, 0.8),
+            rgba(13, 15, 18, 0.95)
+        ),
+        url("../assets/muscle.jpg");
+
+    /* Ajuste o tamanho aqui: experimente 'contain' ou reduza para ex: 90% auto */
+    background-size: cover; 
+    background-position: center;
+    background-repeat: no-repeat;
+
+    color: var(--cor-branca);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.conteudo_banner {
+    max-width: 800px;
+    animation: aparecer 0.8s ease;
+}
+
+.conteudo_banner h1 {
+    font-size: clamp(32px, 5vw, 50px);
+    font-weight: 800;
+    margin-bottom: 15px;
+    letter-spacing: -0.5px;
+}
+
+.conteudo_banner p {
+    font-size: 18px;
+    color: var(--cor-secundaria);
+}
+
+.subtitulo,
+.etiqueta {
+    display: inline-block;
+    color: var(--vermelho);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    margin-bottom: 12px;
+}
+
+/* ==============================
+   BOTÃO ESTILIZADO
+============================== */
+
+.botao {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--cor-principal), var(--cor-principal-hover));
+    color: var(--cor-branca);
+
+    padding: 14px 28px;
+    border-radius: 10px;
+
+    font-size: 15px;
+    font-weight: 700;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+
+    box-shadow: 0 4px 15px rgba(255, 51, 75, 0.35);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.botao:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(255, 51, 75, 0.5);
+    filter: brightness(1.1);
+}
+
+/* ==============================
+   GRID E CARDS MODERNOS (Equipe, Serviços, etc.)
+============================== */
+
+.conteiner_principal,
+.conteiner_contato {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 70px 25px;
+
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 30px;
+}
+
+.card_service,
+.caixa_contato {
+    background-color: var(--cor-fundo-card);
+    border-radius: var(--borda-arredondada);
+    overflow: hidden;
+
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    box-shadow: var(--sombra-padrao);
+
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+}
+
+.card_service:hover,
+.caixa_contato:hover {
+    transform: translateY(-8px);
+    border-color: rgba(255, 51, 75, 0.3);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+}
+
+/* Imagens do card (ajustadas para perfil/serviço) */
+.card_service img {
+    display: block;
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    object-position: top;
+    transition: transform 0.5s ease;
+}
+
+.card_service:hover img {
+    transform: scale(1.05);
+}
+
+.card_service h2,
+.card_service h3,
+.caixa_contato h2 {
+    color: var(--cor-branca);
+    font-size: 22px;
+    font-weight: 700;
+    margin: 25px 25px 10px;
+}
+
+.card_service p,
+.caixa_contato p,
+.info_item {
+    color: var(--cor-secundaria);
+    font-size: 15px;
+    line-height: 1.7;
+    margin: 0 25px 25px;
+}
+
+/* ==============================
+   BOTÃO DO WHATSAPP NO MENU
+============================== */
+
+.menu .btn-whatsapp {
+    background-color: #25d366; /* Verde oficial do WhatsApp */
+    color: #ffffff !important;
+    padding: 10px 18px !important;
+    border-radius: 8px;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+}
+
+/* Remove a linha vermelha inferior apenas neste botão */
+.menu .btn-whatsapp::after {
+    display: none !important;
+}
+
+/* Efeito ao passar o rato */
+.menu .btn-whatsapp:hover {
+    background-color: #20ba5a;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5);
+}
+
+/* ==============================
+   FORMULÁRIOS E CAMPOS
+============================== */
+
+.caixa_contato {
+    padding: 35px;
+}
+
+.formulario {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.campo label {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--cor-texto);
+}
+
+.campo input,
+.campo textarea {
+    width: 100%;
+    padding: 14px 16px;
+    background-color: var(--cor-fundo);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    color: var(--cor-branca);
+    font-family: inherit;
+    font-size: 15px;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.campo input:focus,
+.campo textarea:focus {
+    border-color: var(--cor-principal);
+    box-shadow: 0 0 0 3px rgba(255, 51, 75, 0.2);
+}
+
+.mapa_container {
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-top: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* ==============================
+   RODAPÉ
+============================== */
+
+footer {
+    background-color: var(--cor-escura);
+    color: var(--cor-secundaria);
+    padding: 40px 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    margin-top: 60px;
+}
+
+.footer {
+    max-width: 1200px;
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.footer img {
+    width: 75px;
+    height: auto;
+    object-fit: contain;
+}
+
+.footer p {
+    font-size: 14px;
+}
+
+/* ==============================
+   ANIMAÇÃO
+============================== */
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==============================
+   RESPONSIVIDADE
+============================== */
+
+@media (max-width: 850px) {
+    .conteiner_principal,
+    .conteiner_contato {
+        grid-template-columns: 1fr;
+        padding: 40px 20px;
+    }
+}
+
+@media (max-width: 600px) {
+    .navegacao {
+        flex-direction: column;
+        padding: 15px;
+        gap: 15px;
+    }
+
+    .menu {
+        flex-wrap: wrap;
+        gap: 15px 20px;
+        justify-content: center;
+    }
+
+    .footer {
+        flex-direction: column;
+        text-align: center;
+    }
+}

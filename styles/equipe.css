@@ -1,0 +1,323 @@
+/* ==============================
+   CONFIGURAÇÕES GERAIS
+============================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --cor-principal: #e63946;
+    --cor-principal-hover: #c1121f;
+    --cor-fundo: #f4f5f7;
+    --cor-texto: #222222;
+    --cor-secundaria: #666666;
+    --cor-escura: #121212;
+    --cor-branca: #ffffff;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Roboto", sans-serif; /* Aplica Roboto em todo o site */
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    line-height: 1.6;
+}
+
+/* ==============================
+   MENU DE NAVEGAÇÃO (COM LOGO)
+============================== */
+
+header {
+    width: 100%;
+    background-color: var(--cor-escura);
+    position: relative;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+.navegacao {
+    max-width: 1200px;
+    min-height: 80px;
+    margin: 0 auto;
+    padding: 0 25px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Centraliza tudo no meio da barra */
+    position: relative;      /* Permite posicionar a logo de forma absoluta se quiser */
+}
+
+/* Se quiser manter a logo na esquerda e o menu perfeitamente no centro da página */
+.logonav {
+    position: absolute;
+    left: 25px; /* Fixa a logo no canto esquerdo */
+}
+
+.logonav img {
+    display: block;
+    width: 75px;
+    height: auto;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.logonav img:hover {
+    transform: scale(1.05);
+}
+
+/* Lista do Menu */
+.menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu li a {
+    display: block;
+    position: relative;
+    padding: 20px 0;
+
+    color: var(--cor-branca);
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+
+    transition: color 0.3s ease;
+}
+
+/* Linha vermelha inferior */
+.menu li a::after {
+    content: "";
+    position: absolute;
+    bottom: 12px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background-color: var(--cor-principal);
+    transition: width 0.3s ease;
+}
+
+/* Hover e Item Ativo */
+.menu li a:hover,
+.menu li a[aria-current="page"] {
+    color: var(--cor-principal);
+}
+
+.menu li a:hover::after,
+.menu li a[aria-current="page"]::after {
+    width: 100%;
+}
+
+/* ==============================
+   BANNER PRINCIPAL
+============================== */
+
+.banner {
+    min-height: 380px;
+    padding: 80px 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    background:
+        linear-gradient(
+            rgba(13, 15, 18, 0.8),
+            rgba(13, 15, 18, 0.95)
+        ),
+        url("../assets/evolution.jpg");
+
+    /* Ajuste o tamanho aqui: experimente 'contain' ou reduza para ex: 90% auto */
+    background-size: cover; 
+    background-position: center;
+    background-repeat: no-repeat;
+
+    color: var(--cor-branca);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.conteudo_banner {
+    max-width: 800px;
+    animation: aparecer 0.8s ease;
+}
+
+.conteudo_banner h1 {
+    font-size: clamp(32px, 5vw, 48px);
+    font-weight: 700;
+    margin-bottom: 12px;
+    line-height: 1.2;
+}
+
+.conteudo_banner p {
+    font-size: 18px;
+    color: #e0e0e0;
+}
+
+.subtitulo,
+.etiqueta {
+    display: inline-block;
+    color: var(--vermelho);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    margin-bottom: 12px;
+}
+
+/* ==============================
+   GRELHA E CARDS (SERVIÇOS / EQUIPE)
+============================== */
+
+.conteiner_principal {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 25px;
+
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 30px;
+}
+
+.card_service {
+    background-color: var(--cor-branca);
+    border-radius: 12px;
+    overflow: hidden;
+
+    border: 1px solid #e7e7e7;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
+
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.card_service:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.13);
+}
+
+.card_service img {
+    display: block;
+    width: 100%;
+    height: 280px; 
+    object-fit: cover;
+    object-position: center; /* Foca na parte superior da imagem (rostos) */
+
+    transition: transform 0.4s ease;
+}
+.card_service:hover img {
+    transform: scale(1.03);
+}
+
+.card_service h2,
+.card_service h3 {
+    color: var(--cor-escura);
+    font-size: 22px;
+    font-weight: 700;
+
+    margin: 20px 25px 8px;
+    line-height: 1.3;
+}
+
+.card_service p {
+    color: var(--cor-secundaria);
+    font-size: 15px;
+    line-height: 1.7;
+
+    margin: 0 25px 20px;
+}
+
+/* ==============================
+   RODAPÉ
+============================== */
+
+footer {
+    background-color: var(--cor-escura);
+    color: var(--cor-branca);
+    padding: 30px 20px;
+    margin-top: 40px;
+}
+
+.footer {
+    max-width: 1200px;
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.footer img {
+    width: 75px;
+    height: auto;
+    object-fit: contain;
+}
+
+.footer p {
+    color: #ccc;
+    font-size: 14px;
+}
+
+/* ==============================
+   ANIMAÇÃO DE ENTRADA
+============================== */
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==============================
+   RESPONSIVIDADE (TABLETS E TELEMÓVEIS)
+============================== */
+
+@media (max-width: 850px) {
+    .conteiner_principal {
+        grid-template-columns: 1fr;
+        padding: 40px 20px;
+    }
+
+    .card_service img {
+        height: 240px;
+    }
+}
+
+@media (max-width: 600px) {
+    .navegacao {
+        flex-direction: column;
+        padding: 15px 10px;
+        gap: 12px;
+    }
+
+    .menu {
+        flex-wrap: wrap;
+        gap: 10px 18px;
+    }
+
+    .menu li a {
+        font-size: 14px;
+        padding: 5px 0;
+    }
+
+    .footer {
+        flex-direction: column;
+        text-align: center;
+    }
+}
