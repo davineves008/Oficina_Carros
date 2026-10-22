@@ -53,6 +53,24 @@ header {
     justify-content: center;
 }
 
+/* Se quiser manter a logo na esquerda e o menu perfeitamente no centro da página */
+.logonav {
+    position: absolute;
+    left: 25px; /* Fixa a logo no canto esquerdo */
+}
+
+.logonav img {
+    display: block;
+    width: 75px;
+    height: auto;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.logonav img:hover {
+    transform: scale(1.05);
+}
+
 .menu {
     display: flex;
     align-items: center;
